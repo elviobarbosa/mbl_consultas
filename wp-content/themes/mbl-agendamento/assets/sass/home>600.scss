@@ -1,0 +1,235 @@
+
+@media only screen and (min-width: 768px){
+	#home{
+		.dobra-dois{
+			margin-top: 50px;
+			background-position: 100% 0px;
+    		background-size: 200px;
+
+			.roll{
+				h2{
+					font-size: 38px;
+				}
+				.grid{
+					>div{
+						width: 400px;
+						.text h3,
+						.text h4{
+							font-size: 24px;
+							margin-top: 10px;
+						}
+					}
+				}
+			}
+
+		}
+
+		.dobra-dois .roll .grid, 
+		.dobra-quatro .roll .grid
+		{
+			max-width: 1280px;
+			margin: 0 auto;
+			display: flex;
+	    	justify-content: space-between;
+
+	    	li{
+	    		max-width: 300px;
+	    		width: calc(25% - 10px);
+	    		margin: 0;
+
+
+	    	}
+		}
+
+		.dobra-tres{
+			padding-left: 30px;
+    		padding-right: 30px;
+    		max-width: 1000px;
+    		margin: 70px auto 0 auto;
+
+    		.roll .grid{
+				display: flex;
+			    margin: 20px auto 0 auto;
+			    max-width: 1280px;
+			    padding: 0;
+			    justify-content: space-between;
+
+			    li{
+			    	list-style: none;
+			    	width: calc(50% - 10px);
+			    	margin: 0;
+			    	img{
+		    			margin: 0 auto;
+		    			width: 100%;
+		    		}
+			    }
+			}
+			.ctn{
+				h5{
+					font-size: 40px;
+				}
+			}
+		}
+		
+		.dobra-quatro,
+		.dobra-cinco{
+		    
+		    .ctn {
+		    	margin: 0 auto;
+		   		max-width: 1280px;
+		    	.roll {
+		    		
+		    		h2{
+		    			font-size: 38px;
+		    		}
+		    		.itens{
+		    			
+					    width: auto;
+					    flex-wrap:inherit;
+					    overflow-x: scroll;
+				    	overflow-y: hidden;
+					    -webkit-overflow-scrolling: touch;
+					    position: relative;
+					    padding: 40px 0;
+					    justify-content:inherit;
+
+					    &::-webkit-scrollbar 
+					    {
+					    	display: none;
+						}
+		    			
+		    			>div{
+		    				width: 300px;
+		    				min-width: 300px;
+						    padding-left: 15px;
+						    padding-right: 15px;
+		    				img{
+		    					margin: 0 auto;
+		    				}
+		    			}
+		    			
+		    		}
+		    	}
+
+		    }
+		}
+
+		.dobra-seis{
+			margin-top: 0px;
+			
+			.ctn{
+				background-color: white;
+				max-width: 1280px;
+    			
+				.roll{
+					display: flex;
+					align-items:center;
+					.img{
+						position: relative;
+					    overflow: hidden;
+						>img{
+							
+						}
+					}
+					
+					>div{
+						width: 50%;
+						padding-bottom:0;
+					}
+					>div:nth-child(2){
+						img{
+							height: 150px;
+							width: auto;
+						}
+					}
+				}
+			}
+		}
+
+		.dobra-sete{
+			.ctn{
+				.roll{
+					h2{
+						font-size: 24px;
+					}
+					p{
+						max-width: 600px;
+    					margin: 0 auto;
+					}
+				}
+			}
+		}
+
+		.dobra-um{
+			.banners{
+				.slider{
+					.slick-dots{
+					    top: inherit;
+					    bottom: -30px;
+
+
+					    li{
+							height: 10px;
+							width: 10px;
+							-webkit-border-radius: 12px;
+							-moz-border-radius: 12px;
+							border-radius: 12px;
+							
+					    	button{
+					    		width: 12px;
+					    		height: 12px;
+					    		background-color: $turquesa_escuro;
+					    	}
+					    }
+
+					    .slick-active{
+					    	button{
+					    		background-color: $marrom;
+					    	}
+					    }
+					}
+				}
+			} 
+		} 
+	}
+}
+
+@media only screen and (min-width: 980px){
+	#home{
+		.dobra-dois{
+			margin-top: 50px;
+			background-position: 80% 0px;
+		}
+
+		.dobra-seis{
+			.ctn{
+				margin: 50px auto 50px auto;
+				.roll{
+					
+					>div:nth-child(2){
+						img{
+							height: inherit;
+						}
+					}
+				}
+			}
+		}
+
+		.dobra-sete{
+			.ctn {
+				.roll {
+					h2{
+						font-size: 38px;
+						margin-top: 50px;
+					}
+					.grid{
+						max-width: 896px;
+					    margin: 0 auto;
+					    padding: 40px 0;
+					    overflow: hidden;
+					}
+				}
+			}
+		}
+	}
+}

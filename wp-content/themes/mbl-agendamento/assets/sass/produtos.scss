@@ -1,0 +1,330 @@
+.storefront-full-width-content{
+	.woocommerce-products-header{
+		padding: 0 20px;
+		h1{
+			padding: 0 20px;
+			margin: 0 0 10px 0;
+			font-size: 30px;
+    		text-align: center;
+    		text-transform: uppercase;
+		}
+	}
+	.site-main ul.products.columns-4 li.product{
+		border: 1px solid #cec4be;
+	}
+}
+.archive{
+	background-image: url(../images/galho.svg);
+	background-repeat: no-repeat;
+	background-position: 90% 60px;
+	background-size: 100px;
+}
+
+
+.term-description{
+	max-width: 700px;
+    margin: 0 auto;
+    color: $cinza;
+    line-height: 1.6em;
+    text-align: center;
+}
+.storefront-sorting{
+	padding: 20px;
+	margin-bottom: 0;
+}
+
+.woocommerce-ordering{
+	float: left;
+    width: 100%;
+    text-align: center;
+
+    .orderby{
+    	border: none;
+    	border-bottom: 2px solid $verde_marca;
+    	background-color: transparent;
+    	padding: 10px 0px; 
+    	
+    	background-repeat: no-repeat;
+    	background-position: 95% 50%;
+    	color: $marrom;
+    }
+}
+
+
+.woocommerce-result-count{
+	font-size: 16px;
+	color: $marrom;
+	padding: 10px 0;
+}
+
+.btnFiltros{
+	float: right;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    padding: 0 10px;
+    span{
+    	border: 2px solid $verde_marca;
+    	padding: 10px 20px;
+    	color:$marrom;
+    	display: block;
+    }
+}
+.woocommerce-result-count{
+	clear: both;
+	width: 100%;
+	text-align: center;
+}
+
+ul.products {
+	padding: 0 10px;
+	li.product {
+		/*width: calc(50% - 10px);*/
+		margin-bottom: 30px;
+		.woocommerce-loop-product__title{
+			padding: 5px;
+			min-height: 48px;
+
+		}
+		img{
+			margin: 0;
+    		width: 100%;
+		}
+	}
+	.button{
+		width: 95%;
+		background-color:$verde_marca;
+		color: white;
+		margin-top: 10px;
+		font-size: 15px;
+	    padding: 10px 8px;
+	    text-transform: uppercase;
+	}
+}
+.wc-block-grid__products{
+	display: flex;
+	flex-wrap:wrap;
+	padding: 0 10px;
+	justify-content: center;
+	&::before{
+		display: none;
+	}
+}
+
+
+.site-main ul.products.columns-3 li.product{
+	background: #f0e7e1;
+    border: 1px solid #cec4be;
+}
+.onsale{
+	display: none;
+}
+ul.products li.product .price, 
+.onsale, 
+.wc-block-grid__product-onsale{
+	color:$marrom;
+	font-weight: bold;
+	margin-bottom: 0;
+	font-size: 16px;
+
+	span{
+		font-family: 'Playfair Display SC', sans-serif!important;
+		font-size: 20px;
+	}
+}
+
+ul.products li.product .woocommerce-loop-product__title{
+	color:$marrom;
+	font-size: 20px
+}
+
+.loop.fswp_installments_price .price.fswp_calc .fswp_installment_prefix,
+.loop.fswp_installments_price .price.fswp_calc .amount{
+	font-weight: normal;
+	font-size: 14px;
+}
+
+.end-loop {
+	.storefront-sorting {
+		.woocommerce-ordering,
+		.woocommerce-result-count{
+			display: none;
+		}
+	}
+}
+
+.woocommerce-message{
+	background-color: #7a936d;
+}
+
+//SINGLE PRODUCTS
+
+.product_title{
+	color: $marrom;
+	text-align: center;
+	padding: 0 0 0px 0;
+	font-size: 24px;
+	text-transform: uppercase;
+}
+
+
+.related {
+	margin-top: 50px;
+	>h2:first-child{
+		
+		font-size: 30px;
+		color: $marrom;	
+	}
+}
+table:not( .has-background ) tbody td,
+table:not( .has-background ) tbody tr:nth-child(2n) td{
+	background-color: transparent;
+}
+
+table:not( .has-background ) th {
+    background-color: white;
+}
+
+.widget-area{
+	display: none;
+    background-color: white;
+    position: fixed;
+    z-index: 999;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    color: $marrom;
+
+    .close{
+    	background-image: url(../images/custom/close-modal.svg);
+    	background-repeat: no-repeat;
+    	width: 20px;
+	    height: 20px;
+	    position: absolute;
+	    top: 26px;
+	    right: 20px;
+    }
+    .widget-title{
+    	font-weight: bold;
+    	
+    }
+    .woof_list label{
+    	font-size: 15px;
+    }
+}
+
+.single-product div.product{
+	.woocommerce-product-gallery{
+		margin-bottom: 20px;
+
+		img{
+			margin: 15px auto 0 auto;
+		}
+
+		.woocommerce-product-gallery__trigger{
+			background-color:#ffffff61;
+
+
+		}
+	}
+
+	.single.fswp_installments_price .price.fswp_calc{
+		font-size: 14px;
+		color: black;
+		text-align: center;
+		padding: 0;
+		font-weight: normal;
+		margin-top: 0;
+	}
+	form.cart {
+		.quantity{
+			margin-right: 0;
+		}
+	} 
+	.variations_button{
+		position: fixed;
+	    bottom: 0;
+	    z-index: 1;
+	    width: 100%;
+	    padding: 0;
+    	margin: 0;
+	}
+	p.price{
+		font-size: 18px;
+		font-weight: bold;
+		color: $marrom;
+		text-align: center;
+		margin: 0;
+		font-family: 'Playfair Display SC', sans-serif!important;
+	}
+	.woocommerce-product-details__short-description{
+		text-align: center;padding: 10px 20px;
+	}
+
+	.quantity .qty{
+		width: 80px;
+		background: white;
+    	color: $marrom;
+    	height: 50px;
+	}
+
+	.button.alt{
+		width: Calc(100% - 80px);
+		color: white;
+		background-color: $verde_marca;
+		font-size: 20px;
+		height: 50px;
+		border: 1px solid $verde_marca;
+	}
+
+	.product_meta{
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+
+	.woocommerce-tabs ul.tabs li{
+		padding: 0 20px;
+	}
+
+	.woocommerce-tabs ul.tabs li.active::after{
+		right: 10px;
+	}
+
+	.woocommerce-tabs .panel{
+		h2:first-of-type{
+			padding: 0 20px;
+		}
+
+		p{
+			padding: 0 20px;
+		}
+
+	} 
+	.related > h2:first-child{
+		text-align: center;
+	}
+	.woof_products_top_panel {
+		display: none!important;
+	}
+
+}
+.woocommerce #shipping-calc {
+	#wscp-button{
+		width: 35%;
+		color: $marrom;
+		background-color: $verde_marca;
+
+	}
+	#delivery_truck{
+		fill:$marrom;
+	}
+	#wscp-postcode.text{
+		background-color: white;
+		width: calc(78% - 160px);
+	}
+}
+

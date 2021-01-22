@@ -1,0 +1,26 @@
+.entry-content{
+	padding: 0 30px;
+
+	input[type='text'],
+	input[type='tel'],
+	input[type='number'],
+	input[type='email'],
+	textarea{
+		background: white;
+	    border: 1px solid #ccc;
+	    box-shadow: none;
+
+	    &:focus{
+	    	border-bottom: 2px solid $gold;
+	    }
+	}
+	.button.alt,
+	input[type='submit']{
+		background-color: $blue;
+		border-bottom: 2px solid $gold;
+		color: $gold;
+		font-family: 'Crimson Text', serif!important;
+		text-transform: uppercase;
+    	font-size: 20px;
+	}
+}

@@ -1,0 +1,62 @@
+#contato{
+	
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing:border-box;
+
+	h2{
+		font-size: 46px;
+		font-family: 'Sacramento', cursive;
+		color: $marrom;
+		margin-bottom: 0;
+	}
+	>p{
+		font-size: 18px;
+		color: #59340d;
+    	padding-bottom: 40px;
+	}
+
+	.ctn{
+		.form{
+			width: 50%;
+		}
+		form{
+			input[type='text'],
+			input[type='number'],
+			input[type='email'],
+			input[type='tel'],
+			input[type='url'],
+			input[type='password'],
+			input[type='search'],
+			textarea, .input-text{
+				background-color: #fdfdfd;
+			    border: 1px solid #eae4d9;
+			    box-shadow: none;
+			    margin-bottom: 20px;
+			    width: 100%;
+			}
+			.btn{
+				width: 100%;
+			}
+		}
+
+		strong{
+			font-size: 18px;
+			color: #59340d;
+		}
+
+		.dados{
+			width: 50%;
+			padding: 0px 20px 0 40px;
+		}
+	}
+}
+
+@media (min-width: 768px){
+	#contato{
+		.ctn{
+			display: flex;
+		}
+	}
+}

@@ -1,0 +1,255 @@
+@media (min-width: 768px){
+	#masthead.site-header{
+    	margin: 0 auto 0px auto;
+	}
+
+	.site-header-cart .widget_shopping_cart{
+
+	}
+	.site-branding
+	{
+		margin-left: 10px!important;
+		.site-title a{
+			width: 188px;
+		}
+		.site-description{
+			display: none;
+		}
+	}
+	.woocommerce-active .site-header .main-navigation{
+		width: 100%;
+	}
+	.woocommerce-breadcrumb{
+		text-align: left;
+		max-width: 1280px;
+
+	}
+	.col-full{
+		max-width: 100%;
+		padding: 0px 0px 0 0;
+	}
+	.storefront-breadcrumb{
+		padding: 40px 20px 0 20px;
+		max-width: 1280px;
+		margin: 0 auto 50px auto;
+	}
+
+	.right-sidebar {
+		.content-area{
+			float: right;
+		}
+		.widget-area{
+			float: left;
+		}
+	}
+
+	.main-navigation ul{
+		li {
+			text-transform: uppercase;
+			a{
+				color: $bege;
+				font-size:16px;
+			}
+		}	
+	} 
+	 
+	.main-navigation ul.menu > li > a, .main-navigation ul.nav-menu > li > a{
+		padding: 0px 0;
+		color: white;
+		font-size: 12px;
+	}
+	.main-navigation ul.menu, .main-navigation ul.nav-menu{
+		text-align: center;
+		padding: 10px 0;
+		background-color: $verde_marca;
+		margin-left: 0;
+	}
+
+	
+	.woocommerce-active{
+		#masthead.site-header{
+			padding: 10px 0 0 0;
+
+			ul.menu li.current-menu-item > a{
+				color: #f0e7e1;
+			}
+
+			.site-search{
+				width: 170px;
+				margin-top: 0px;
+				margin-right: 20px;
+
+				.widget_product_search{
+					form::before{
+						top: 10px;
+						left: 10px;
+					}
+					input[type=text],
+					input[type=search]{
+						padding: 8px 0;
+						box-shadow: none;
+						background: transparent;
+				    	border: 1px solid $verde_marca;
+				    	text-indent: 30px;
+					}
+				} 
+
+			}
+			
+			.entrar{
+				background-image: url(../images/ico_user.png);
+				background-repeat: no-repeat;
+				display: block;
+			    float: right;
+			    padding: 0px 20px 0 20px;
+			    margin: 0px 80px 0 0;
+			    z-index: 1;
+			    position: relative;
+			    height: 31px;
+
+				li{
+					list-style: none;
+
+					a{
+						color: $marrom;
+					}
+				}
+				
+				
+			}
+			.site-header-cart {
+				background-image: url(../images/ico_sacola.png);
+				background-repeat: no-repeat;
+				position: absolute;
+				top: 15px;
+				right: 10px;
+				background-position: 100% 0;
+				width: 80px;
+				.cart-contents::after{
+					display: none;
+				}
+				.cart-contents{
+					padding: 0 0;
+					height: 36px;
+					color:$verde_marca;
+					
+
+					.woocommerce-Price-amount{
+						display: none;
+					}
+					
+				}
+			}
+		}
+	} 
+	
+
+	
+
+	.site-footer {
+		padding: 20px;
+		
+		.col-full 
+		{
+			.endereco{
+				font-size: 14px;
+				padding-bottom: 0!important;
+				display: flex;
+			    justify-content: space-between;
+			    align-items: baseline;
+			    border-top: 1px solid #9fb79b;
+    			margin-top: 40px;
+    			padding-top: 0;
+
+    			address{
+					text-align: left;
+					margin: 0;
+				}
+			}
+			.ctn{
+
+				.contatos{
+					.group{
+						display: flex;
+						justify-content: center;
+						padding: 20px 0;
+					}
+					.tradicional{
+						margin-bottom: 0;
+					}
+					.social{
+						margin-bottom:0;
+						ul{
+							padding: 0;
+						}
+					}
+				}
+				.pagamento{
+					display: flex;
+    				justify-content: space-between;
+
+    				>img{
+    					padding:0px 0 0 0;
+    					margin: 40px 0 0 0;
+    				}
+				}
+		
+				.menu-rodape-container{
+					
+				}
+				.right{
+					
+					>div{
+						
+					}
+				}
+			}
+		}
+	}
+	.single{
+		.site-content{
+			border-top: 1px solid #e1d3ca;
+		}
+	}
+}
+
+@media (min-width: 980px){
+	.site-branding
+	{
+		.site-title a{
+			width: 238px;
+    		height: 48px;
+		}	
+	}
+	.woocommerce-active #masthead.site-header {
+		.entrar{
+			cursor: pointer;
+			width: 80px;
+			background-position: center;
+		}
+		.site-header-cart{
+			width: 300px;
+
+			li:first-child{
+				text-align: right;
+    			padding-right: 30px;
+			}
+		}
+		.site-search{
+			position: relative;
+			margin-right: 0;
+			z-index: 3;
+		}
+	}
+
+	.site-header{
+		.widget{
+			margin-bottom: 0;
+    		z-index: 2;
+		} 
+	}
+	.site-header-cart{
+		width: 180px;
+		z-index: 0;
+	}
+}

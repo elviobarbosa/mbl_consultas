@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mbl-consultas-302321",
+  "private_key_id": "b1436bde00ca405c22474e9910e450354f9e628d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCcve/sRemjqxMe\nZq089Wnt/zya7yiQ2oms724v4utPs9z5RCN+0MnZzXesKA/8HrWRxGMJa/0rs1SJ\nJ3ozUI7rZyGK7vBL9CqO55C/b4BLJXRqKuSkRBIWbnL3FQRsWM4sJ1tD9H6bAvM6\nUpxKxSFhUwNjqu2apI5Xn3pIrmhwleY2tO6zoR8MxFfvC7H0Yy6iZ0PUBntnXYzi\nc/fWK4OgBaIWm6ALaom6J6eP74bag0g9FS/qC1+01uu8cteMzBf17+ZSFoprrVBL\n97nZ+jOHeAHrVZB0Rf2XRfc1wHfV3GQKBwzrp5/ZXbPs3SbvFzBlXq/bivUYUOeZ\nFvul+BF/AgMBAAECggEAD1KSDcBCjXlqg7ejNSkDPfzhk9PQB2PAabjORhLM0Mco\nfEWo9/tj1Xg8kVvT6Yr8Uk+nJC37sItLYaJg/ns1ktWgyyV94C7yVMirtyB9+Nqk\nfWx2sDLnVxddAxfO4uNGOb1vMpQdfFHW19to4/ZOw7uLF/HcYG24bIsZN9m05AHc\nK6JnqgZjCEQ+R/Gh9U6EVkLOl/Unl0s9jT4tXPNF8rcBEB/qQfCEBtl/3gYxDczl\nKEqKuQiDPHK0wdP7Y+9X+RpytJtDnigp/nYGODlf2Ppuq5lHCPZvg0kOpcu3/a56\n8sAtIEN6gpE+uZrrT8LQpizO+J2LQKWoJpxucLpUAQKBgQDR7SaEDrx/O4+wt7/Q\ng/6eX9zCkxzt0xjLkNHsWBXGs9IL/mr5buhZW7Qe6U8IVQrWszJo7EskSwWq/EUH\nzu6UUmfXk+zyu2/eZHi9w7aOeSLdmDJOhqc97cl6okULW5/FMAJF8ElRnHG0vE1B\nbMFaadPJ89Nmij9Pyrmh7nbX/wKBgQC/JJXMBNFZRyNy/wnYvm0FtNsvya/DvqvQ\nYI/F5KwvcZ/bEiFsuxX01GaV1F0U0YbRH/tFb74ku1yGvIbKQeKUTAF8RDzDerRa\n49Gyr9PCKIHoyRjQ/wlWsHFhgOZw1/XXpl/H3rvpFpJU9a17fFYjn0KpKi/qsPuO\nr1VsXvrGgQKBgQC1JITyuOCQjW2tGLGMlQlV0fRldZol4dzoczuhTFTmE+6w6MWY\nHMqjqMzhS4Ml9nQW1aQvA47Hb3EhnPNYDIi0NfNjA0MYJQMgDORfIw1ZHVAnlJf8\nSJbxikkr5+/aICLafVXI0dICeRNo2H91cAncIatd/WayeaKuEIlkIKguMwKBgGFl\nUPb+VXY6a3PDRM8uaPsJZs545JjHZWDucxQRKzOZoCzOlj2DLvLr78HUzgE3qoyQ\n0UZWY/rvhXwaQEx7Oer6t58MXjH1KkVN5KI6OZqrbVaicYS9D5MeoQdf2QwS3vAd\nlJyRgAqLN9EWxmkvt+y60ArGtlfOCsBv0wU/eGUBAoGAU7sG21ha6hthhXyKBnve\nLVfz8rrNdpdqKlfuaSyQQx8845S+3Mm5MzkooeNQpsLULleyiANld/Pk8mIdWK2I\n97vehf7A53GZzGkjMATNHnPMR+WV8rWd1dlqCpDYZ8ZUU1gLMTdo4DOfrBurgfF9\nxoMKcf5SZN0GiQjMXfRNLZc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "mbl-consultas@mbl-consultas-302321.iam.gserviceaccount.com",
+  "client_id": "114998762045472998159",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mbl-consultas%40mbl-consultas-302321.iam.gserviceaccount.com"
+}

@@ -1,0 +1,276 @@
+#home{
+	.dobra-um{
+		.banners{
+			
+			margin: 0 auto;
+			.slider{
+				padding: 0;
+				margin: 0;
+
+				.slick-slide{
+					width: 100%;
+				}
+				img{
+					width: 100%;
+				}
+
+				ul{
+					padding: 0;
+					margin: 0 ;
+					width: 100%;
+					li{
+
+					}
+				}
+
+				.slick-dots{
+					position: absolute;
+				    top: 10px;
+				    text-align: center;
+				    left: 50%;
+    				transform: translate(-50%, 0);
+
+				    li{
+				    	list-style: none;
+				    	display: inline-block;
+				    	margin: 0 5px;
+				    	overflow: hidden;
+    					height: 10px;
+    					background-color: transparent;
+
+				    	button{
+				    		width: 50px;
+				    		height: 2px;
+				    		overflow: hidden;
+				    		border:none;
+				    		text-indent: -999px;
+				    		background-color: white;
+				    		padding: 0;
+				    		outline: none;
+				    	}
+				    }
+
+				    .slick-active{
+				    	button{
+				    		opacity: .5;
+				    	}
+				    }
+				}
+			}
+		}
+	}
+
+	.dobra-dois{
+		background-image: url(../images/galhos.png);
+		background-repeat: no-repeat;
+		background-size: 100px;
+    	background-position: 100% 30px;
+
+		.roll{
+			width: 100%;
+			overflow: hidden;
+			cursor: grabbing;
+			h2{
+				font-size: 24px;
+				text-align: center;
+				text-transform: uppercase;
+				margin-top: 40px;
+			}
+
+			.grid{
+				display: flex;
+			    flex-wrap: nowrap;
+			    overflow-x: auto;
+			    align-items: normal;
+			    padding: 0px 10px;
+			
+				>div{
+					width: 300px;
+					flex: 0 0 auto;
+					padding-left: 15px;
+					padding-right: 15px;
+
+					.text{
+					 	display: flex;
+    					justify-content: space-between;
+    					
+    					h3,h4{
+    						font-size: 18px;
+    						color:$marrom;
+    						text-transform: uppercase;
+    					}
+
+					}
+					p{
+						font-size:16px;
+						color: $cinza;
+					}
+				}
+			}
+		}
+	}
+
+	.dobra-tres{
+		margin-top: 60px;
+		.ctn{
+			display: flex;
+			padding: 10px;
+			align-items: center;
+
+			h5{
+				width: 50%;
+				color: $marrom;
+				font-size: 18px;
+			}
+			.img{
+				width: 50%;
+				background-image: url(../images/santa-grasse-home.jpg);
+				background-size: 80%;
+			    background-repeat: no-repeat;
+			    background-position: 100% 0%;
+				img{
+					width: calc(100% - 10px);
+    				margin-top: 10px;
+				}
+			}
+		}
+	}
+
+	.dobra-quatro,
+	.dobra-cinco{
+		padding-top: 60px;
+		.ctn{
+			.roll{
+				h2{
+					font-size: 20px;
+					text-transform: uppercase;
+					text-align: center;
+				}
+				.itens{
+					display: flex;
+					flex-wrap:wrap;
+					justify-content: space-around;
+					align-items: flex-end;
+					
+
+					>div{
+						text-align: center;
+						width: Calc(50% - 15px);
+						margin-bottom: 20px;
+
+						h3{
+							padding: 10px;
+							font-size: 16px;
+							color: $marrom;
+							text-transform: uppercase;
+							min-height: 83px;
+							max-height: 83px;
+							overflow: hidden;
+						}
+						h4{
+							font-size: 16px;
+							color: $cinza;
+							text-transform: uppercase;
+							padding: 0;
+							margin: 0 0 20px 0;
+						}
+						p{
+							margin: 0 0 20px 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	.dobra-cinco{
+		background-image: url(../images/graveto.png);
+		background-position: -30px -43px;
+	    overflow: hidden;
+	    background-repeat: no-repeat;
+	    background-size: 170px;
+	}
+
+	.dobra-seis{
+		margin-top: 40px;
+		.ctn{
+			.roll{
+				>img{
+					width: 100%;
+				}
+				>div{
+					background: white;
+					text-align: center;
+					padding-bottom: 20px;
+
+					img{
+						margin: 0 auto;
+
+					}
+
+					.btn{
+						width: 80%;
+						margin: 0 auto;
+						letter-spacing: 0;
+					}
+				}
+				
+			}
+		}
+	}
+
+	.dobra-sete{
+		background-color: #B2D1CB;
+		padding-top: 40px;
+
+		.ctn{
+			.roll{
+
+				h2{
+					font-size: 20px;
+					text-align: center;
+					text-transform: uppercase;
+				}
+				>p{
+					font-size: 16px;
+					text-align: center;
+					padding: 0 10px;
+					color: #3E726D;
+				}
+
+				.grid{
+					display: flex;
+				    flex-wrap: nowrap;
+				    overflow-x: auto;
+				    align-items: normal;
+				    padding: 30px 10px;
+
+				    >div{
+						width: 300px;
+						flex: 0 0 auto;
+						padding-left: 15px;
+						padding-right: 15px;
+
+						.text{
+						 	text-align: center;
+						 	h3{
+						 		padding-top: 10px;
+						 	}
+	    					
+	    					h3,h4{
+	    						font-size: 18px;
+	    						color:$cinza;
+	    						text-transform: uppercase;
+	    					}
+
+						}
+						.btn{
+							background-color: white;
+							color: $verde_marca;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
