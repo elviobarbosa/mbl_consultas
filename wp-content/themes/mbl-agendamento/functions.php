@@ -54,6 +54,16 @@ function storefront_child_header_remove()
    	//add_action("storefront_after_footer","dados",35);
 }
 
+// Hook in
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+// Inputa o numero do telefone no checkout 
+function custom_override_checkout_fields( $fields ) {
+  global $woocommerce;
+  $fields['billing']['billing_phone']['default'] = $woocommerce->session->get( 'billing_phone');
+     
+  return $fields;
+}
 
 //================================================================
 //******************** ALERTAS E LEMBRETES ***********************
@@ -77,6 +87,8 @@ function custom_send_email_notifications( $order_id, $old_status, $new_status, $
         // Sending the email from this instance
         $wc_emails['WC_Email_Cancelled_Order']->trigger( $order_id );
 
+        //envie mensagem de cancelamento para o consumidor
+
     } 
     elseif ( $new_status == 'failed' ) {
         // change the recipient of this instance
@@ -85,9 +97,6 @@ function custom_send_email_notifications( $order_id, $old_status, $new_status, $
         $wc_emails['WC_Email_failed_Order']->trigger( $order_id );
     } 
 }
-//google calendar secrets
-//cliendID: 791875090201-l0f98cdjiqa89p57ota1s3dneqrfdlc0.apps.googleusercontent.com
-//cliente secret: BLnymwQ4xjmmCO2J62Zsi3fW
 
 
 // --------------------- NOVO PEDIDO --------------------------//
@@ -116,7 +125,7 @@ function order_completed( $order_id) {
   $email = $obj_order->billing->email;
 
   //guarda ID da consulta
-  $appt = get_appointment_approval_msg($order_id);
+  $appt = get_appointment_msg($order_id, 'booked_approval_email_content');
 
   //Pega a data em Timestamp da consulta
   $data = get_post_meta($appt['appt_id'], '_appointment_timestamp');
@@ -150,9 +159,7 @@ function order_completed( $order_id) {
 
   if ($local){
     $text = str_replace("{--------------}", "*Local: " . $address . "*", $text);
-  } else {
-    $text = str_replace("{--------------}", "*" . $itemN . "*", $text);
-  }
+  } 
   
 
   //GOOGLE CALENDAR
@@ -216,12 +223,35 @@ function order_completed( $order_id) {
     $conference->setCreateRequest($conferenceRequest);
     $event->setConferenceData($conference);
     $eventI = $service->events->patch($calendarId, $event->id, $event, ['conferenceDataVersion' => 1]);
+    add_post_meta( $order_id, '_beta_digital_meet_link', $eventI->hangoutLink );
+
+    $text = str_replace("{--------------}", "*Link da Reunião: " . $eventI->hangoutLink . "*", $text);
+  
   endif;
 
   sendWhatsApp($phone, $text);
 
 }
 add_action( 'woocommerce_order_status_completed', 'order_completed', 10, 1 );
+
+
+function cancelled_order($order_id){
+  $order = wc_get_order( $order_id );
+  $obj_order = json_decode($order);
+
+  $phone = $obj_order->billing->phone;
+  $cliente = $obj_order->billing->first_name;
+  $email = $obj_order->billing->email;
+
+  $text = "Olá, " . $cliente . "\n";
+  $text .= "Até o presente momento não identificamos o seu pagamento, por essa razão o agendamento da sua consulta não foi concluído. No entanto, encorajamos a nos procurar para o que precisar.\n\n";
+  $text .= "Estamos à disposição,\nMBL Advogados";
+
+
+  sendWhatsApp($phone, $text);
+}
+
+add_action( 'woocommerce_order_status_cancelled', 'cancelled_order', 21, 1 );
 
 function do_approval($order_id){
   global $woocommerce;
@@ -234,7 +264,7 @@ function do_approval($order_id){
   $cliente = $data->billing->first_name;
   $email = $data->billing->email;
 
-  $appt = get_appointment_approval_msg($order_id);
+  $appt = get_appointment_msg($order_id, 'booked_approval_email_content');
 
   //Pega a data em Timestamp da consulta
   $data = get_post_meta($appt['appt_id'], '_appointment_timestamp');
@@ -333,7 +363,7 @@ function do_approval($order_id){
 
 
 //Obtem a mensagem de confirmação de consulta
-function get_appointment_approval_msg($order_id){
+function get_appointment_msg($order_id, $getMessage){
   $args = array(
     'post_type' => 'booked_appointments',
     'posts_per_page' => 1,
@@ -357,13 +387,13 @@ function get_appointment_approval_msg($order_id){
       global $post;
 
       $appt_id = $post->ID;
-      $email_content = get_option('booked_approval_email_content',false);
+      $email_content = get_option($getMessage,false);
       
       if ($email_content):
 
-        $token_replacements = booked_get_appointment_tokens( $appt_id );
+        //$token_replacements = booked_get_appointment_tokens( $appt_id );
         //print_r($token_replacements);
-        $email_content = booked_token_replacement( $email_content,$token_replacements );
+        //$email_content = booked_token_replacement( $email_content,$token_replacements );
         return array('text'=>$email_content, 'appt_id'=> $appt_id);
         
         endif;
@@ -463,10 +493,10 @@ function user_reminders(){
 
         if ($email_content && $email_subject):
 
-          $token_replacements = booked_get_appointment_tokens( $appt_id );
+          //$token_replacements = booked_get_appointment_tokens( $appt_id );
           //print_r($token_replacements);
-          $email_content = booked_token_replacement( $email_content,$token_replacements );
-          $email_subject = booked_token_replacement( $email_subject,$token_replacements );
+          //$email_content = booked_token_replacement( $email_content,$token_replacements );
+          //$email_subject = booked_token_replacement( $email_subject,$token_replacements );
 
 
           $text = "Oi " . $data->billing->first_name . '%0D%0A';
