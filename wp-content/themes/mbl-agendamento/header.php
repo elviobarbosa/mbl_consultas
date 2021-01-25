@@ -16,7 +16,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 
-<?php wp_head(); //user_reminders();?>
+<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -45,4 +45,3 @@
 
 		<?php
 		do_action( 'storefront_content_top' );
-		

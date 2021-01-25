@@ -129,8 +129,11 @@ function order_completed( $order_id) {
 
   //Pega a data em Timestamp da consulta
   $data = get_post_meta($appt['appt_id'], '_appointment_timestamp');
-  $dia =  date('Y-m-d', $data[0]);
-  $inicio = date('H:i:s', $data[0]);
+  $dia =  date('d/m/Y', $data[0]);
+  $inicio = date('H:i', $data[0]);
+
+  $diaAgenda =  date('Y-m-d', $data[0]);
+  $inicioAgenda = date('H:i:s', $data[0]);
 
   //pega o horario da consulta no formato 0000-0000
   $time = get_post_meta($appt['appt_id'], '_appointment_timeslot');
@@ -185,11 +188,11 @@ function order_completed( $order_id) {
     'location' => $address,
     'description' => $itemName,
     'start' => array(
-      'dateTime' => $dia . 'T' . $inicio,
+      'dateTime' => $diaAgenda . 'T' . $inicioAgenda,
       'timeZone' => 'America/Fortaleza',
     ),
     'end' => array(
-      'dateTime' => $dia . 'T' . $final,
+      'dateTime' => $diaAgenda . 'T' . $final,
       'timeZone' => 'America/Fortaleza',
     ),
     'recurrence' => array(
@@ -430,11 +433,12 @@ function sendWhatsApp($phone, $text){
   $response = curl_exec($ch);
   $info = curl_getinfo($ch);
   curl_close ($ch);
-  print_r("<pre>");
-  print_r($info);
-  print_r($response);
-  print_r("<br>token=". $token . "&uid=" . $number . "&to=". $numberto ."&custom_uid=mbl-".$date."&text=" . urlencode($text));
-   print_r("</pre>");
+  // print_r("<pre>");
+  // print_r($info);
+  // print_r($response);
+  // print_r("<br>token=". $token . "&uid=" . $number . "&to=". $numberto ."&custom_uid=mbl-".$date."&text=" . urlencode($text));
+  //  print_r("</pre>");
+  return $response;
 }
 
 add_action( 'woocommerce_thankyou', 'new_order_msg',  10, 1  );
@@ -443,9 +447,10 @@ add_action( 'woocommerce_thankyou', 'new_order_msg',  10, 1  );
 
 //CRON JOBS - LEMBRETES
 
-function user_reminders(){
+function user_reminders($timeTo, $field, $message, $assunto){
 
-  $user_reminder_buffer = 40;//get_option('booked_reminder_buffer',30);
+  $user_reminder_buffer = $timeTo;//get_option('booked_reminder_buffer',30);
+ 
 
   $start_timestamp = current_time('timestamp');
   $end_timestamp = strtotime(date_i18n('Y-m-d H:i:s',current_time('timestamp')).' + '.$user_reminder_buffer.' minutes');
@@ -475,43 +480,88 @@ function user_reminders(){
       global $post;
 
       $appt_id = $post->ID;
-      $reminder_sent = get_post_meta($appt_id,'_appointment_user_reminder_sent',true);
+      $reminder_sent = get_post_meta($appt_id, $field, true);
       $order_id = get_post_meta($appt_id, '_booked_wc_appointment_order_id');
-      print_r($order_id[0]);
-      $order = wc_get_order( $order_id[0] );
-      //print_r($order);
-      $data = json_decode($order);
-    
-      $numberto = $data->billing->phone;
+
+      if ($order_id):
+        $order = wc_get_order( $order_id[0] );
+        //print_r($order);
+        $data = json_decode($order);
+        $status = $order->get_status();
+      
+        $numberto = $data->billing->phone;
 
 
-      $send_mail = true;
-      //if ( !$reminder_sent && apply_filters( 'booked_prepare_sending_reminder', true, $appt_id ) ):
-
-        $email_content = get_option('booked_reminder_email',false);
-        $email_subject = get_option('booked_reminder_email_subject',false);
-
-        if ($email_content && $email_subject):
-
-          //$token_replacements = booked_get_appointment_tokens( $appt_id );
-          //print_r($token_replacements);
-          //$email_content = booked_token_replacement( $email_content,$token_replacements );
-          //$email_subject = booked_token_replacement( $email_subject,$token_replacements );
+        $send_mail = true;
+        if ( !$reminder_sent && $status == "completed" ):
 
 
-          $text = "Oi " . $data->billing->first_name . '%0D%0A';
-          //$text .= $email_content;
-          print_r($numberto);
-          print_r($text);
-          sendWhatsApp($numberto, $text);
+          if ($message):
 
-          //update_post_meta($appt_id,'_appointment_user_reminder_sent',true);
+            //Pega a data em Timestamp da consulta
+            $dataHorario = get_post_meta($appt_id, '_appointment_timestamp');
+            $dia =  date('d/m/Y', $dataHorario[0]);
+            $inicio = date('H:i', $dataHorario[0]);
 
-          //do_action( 'booked_reminder_email', $token_replacements['email'], $email_subject, $email_content );
+            //pega o horario da consulta no formato 0000-0000
+            $time = get_post_meta($appt_id, '_appointment_timeslot');
+            $timeslot = explode("-", $time[0]);
+            $final = substr($timeslot[1], 0, 2) . ":" . substr($timeslot[1], -2). ":00";
+            
+            //texto padrão da confirmação
+            $t = strip_tags($message);
+            $t = urlencode($t);
+            //remove caractere que quebra whatsapp
+            $s = str_replace("%26ndash%3B", ' até ', $t);
+            $text = urldecode($s);
+
+            $itemN = "";
+
+            //checa itens da compra
+            foreach ( $order->get_items() as $item_id => $item ) {
+              $itemN .= ($item->get_name());
+            }
+
+            $itemName = str_replace("Video", "Vídeo", $itemN);
+            $meet = (strpos($itemName, "Vídeo") === false ) ? false : true;
+            $local = (strpos($itemName, "Presencial") === false) ? false : true;
+
+            $address = ($local) ? "Av. Dom Luís, 300 - L2, Aldeota," : "";
+
+            if ($local){
+              $text = str_replace("{{TIPO}}", "Presencial na: " . $address, $text);
+            } 
+
+            $link = get_post_meta( $order_id[0], '_beta_digital_meet_link');
+            if ($meet){
+              $text = str_replace("{{TIPO}}", "Link da reunião: " . $link[0], $text);
+            }
+
+            $text = str_replace("{{DIA}}", $dia, $text);
+            $text = str_replace("{{HORA}}", $inicio, $text);
+            $text = str_replace("{{NOME}}", $data->billing->first_name, $text);
+
+            $sendWhats = json_decode(sendWhatsApp($numberto, $text));
+            $sentWhats = (isset($sendWhats->success)) ? true : false;
+            
+
+            $to = $data->billing->email;
+            $subject = $assunto;
+            $body = $text;
+            $headers = array('Content-Type: text/html; charset=UTF-8');
+             
+            $sentEmail = wp_mail( $to, $subject, $body, $headers );
+            
+            if ($sentWhats || $sentEmail){
+              update_post_meta($appt_id, $field, true);
+            }
+            
+            //
+
+          endif;
 
         endif;
-
-      //endif;
+      endif;
 
     endwhile;
 
@@ -519,7 +569,28 @@ function user_reminders(){
 
   wp_reset_postdata();
 
-}
+};
+
+//CRON PARA ENVIAR MENSAGENS COM 24h e 1h antes da reunião
+function alert_24h_before()
+{
+  $message = "Olá, {{NOME}}.\n";
+  $message .= "Lembramos da sua consulta {{TIPO}} confirmada para amanhã, dia {{DIA}} , às {{HORA}}\n\n";
+  $message .= "Até lá!\nMBL Advogados.";
+
+  user_reminders(14401440, '_beta_digital_appoitment_send_24h', $message, 'Lembrete de Consulta: Amanhã você tem consulta');
+
+} add_action( 'cron_24h_before', 'alert_24h_before' );
+
+function alert_1h_before()
+{
+  $message = "Olá, {{NOME}}.\n";
+  $message .= "A sua consulta {{TIPO}} iniciará em uma hora\n\n";
+  $message .= "Espero você!\nMBL Advogados.";
+
+  user_reminders(60, '_beta_digital_appoitment_send_1h', $message, 'Lembrete de Consulta: Começa em 1 hora');
+
+} add_action( 'cron_1h_before', 'alert_1h_before' );
 
 
 //================================================================

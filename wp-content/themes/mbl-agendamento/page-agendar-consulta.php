@@ -19,7 +19,7 @@ endfor;
 
 $woocommerce->session->set( 'billing_phone', $tel);
 
-user_reminders();
+
 ?>
 <style type="text/css" media="screen">
 .calendario{
